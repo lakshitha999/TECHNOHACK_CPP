@@ -1,0 +1,44 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+std::string getComputersChoice() {
+    int random_Number = rand() % 3;
+
+    switch (random_Number) {
+        case 0:
+            return "rock";
+        case 1:
+            return "paper";
+        case 2:
+            return "scissors";
+    }
+    return "";
+}
+
+
+int main() {
+    srand(static_cast<unsigned int>(time(0)));
+
+    std::string yourChoice;
+    std::cout << "Now we are going to play Rock, Paper, Scissors!\n";
+    std::cout << "Select any one (rock, paper, or scissors): ";
+    std::cin >> yourChoice;
+   
+    std::string computersChoice = getComputersChoice();
+    std::cout << "You chose: " << yourChoice << "\n";
+    std::cout << "Computer chose: " << computersChoice << "\n";
+
+    if (yourChoice == computersChoice) {
+        std::cout << "It's a tie between you and computer!\n";
+    } else if (
+        (yourChoice == "rock" && computersChoice == "scissors") ||
+        (yourChoice == "paper" && computersChoice == "rock") ||
+        (yourChoice == "scissors" && computersChoice == "paper")
+    ) {
+        std::cout << "You win!! Congratulations\n";
+    } else {
+        std::cout << "Computer wins!! Better luck next time\n";
+    }
+
+    return 0;
+}
